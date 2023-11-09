@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TMDT_THModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BaiBao">
+    <Key>
+      <PropertyRef Name="MaBao" />
+    </Key>
+    <Property Name="MaBao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaLoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TieuDe" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NgayDang" Type="DateTime" Precision="3" />
+    <Property Name="NgaySua" Type="DateTime" Precision="3" />
+    <Property Name="MaTT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LoaiBaiBao" Relationship="Self.FK__BaiBao__MaLoai__45F365D3" FromRole="BaiBao" ToRole="LoaiBaiBao" />
+    <NavigationProperty Name="TinhTrang" Relationship="Self.FK__BaiBao__MaTT__46E78A0C" FromRole="BaiBao" ToRole="TinhTrang" />
+    <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaBao__4AB81AF0" FromRole="BaiBao" ToRole="BinhLuan" />
+  </EntityType>
+  <EntityType Name="BinhLuan">
+    <Key>
+      <PropertyRef Name="MaBL" />
+    </Key>
+    <Property Name="MaBL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaBao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NoiDung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Ngay" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="BaiBao" Relationship="Self.FK__BinhLuan__MaBao__4AB81AF0" FromRole="BinhLuan" ToRole="BaiBao" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK__BinhLuan__MaKH__4BAC3F29" FromRole="BinhLuan" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="ChucVu">
+    <Key>
+      <PropertyRef Name="MaCV" />
+    </Key>
+    <Property Name="MaCV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenCV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaCV__31EC6D26" FromRole="ChucVu" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaLoaiKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgayThamGia" Type="DateTime" Precision="3" />
+    <Property Name="MaTK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BinhLuans" Relationship="Self.FK__BinhLuan__MaKH__4BAC3F29" FromRole="KhachHang" ToRole="BinhLuan" />
+    <NavigationProperty Name="LoaiKhachHang" Relationship="Self.FK__KhachHang__MaLoa__36B12243" FromRole="KhachHang" ToRole="LoaiKhachHang" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_KhachHang_MaTK" FromRole="KhachHang" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="LoaiBaiBao">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenLoai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BaiBaos" Relationship="Self.FK__BaiBao__MaLoai__45F365D3" FromRole="LoaiBaiBao" ToRole="BaiBao" />
+  </EntityType>
+  <EntityType Name="LoaiKhachHang">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenLoai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KhachHangs" Relationship="Self.FK__KhachHang__MaLoa__36B12243" FromRole="LoaiKhachHang" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CMND" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaCV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="MaTK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ChucVu" Relationship="Self.FK__NhanVien__MaCV__31EC6D26" FromRole="NhanVien" ToRole="ChucVu" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_NhanVien_MaTK" FromRole="NhanVien" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="MaQuyen" />
+    </Key>
+    <Property Name="MaQuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenQuyen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaiKhoans" Relationship="Self.FK__TaiKhoan__MaQuye__3D5E1FD2" FromRole="PhanQuyen" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="MaTK" />
+    </Key>
+    <Property Name="MaTK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenDN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaQuyen" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KhachHangs" Relationship="Self.FK_KhachHang_MaTK" FromRole="TaiKhoan" ToRole="KhachHang" />
+    <NavigationProperty Name="NhanViens" Relationship="Self.FK_NhanVien_MaTK" FromRole="TaiKhoan" ToRole="NhanVien" />
+    <NavigationProperty Name="PhanQuyen" Relationship="Self.FK__TaiKhoan__MaQuye__3D5E1FD2" FromRole="TaiKhoan" ToRole="PhanQuyen" />
+  </EntityType>
+  <EntityType Name="TinhTrang">
+    <Key>
+      <PropertyRef Name="MaTT" />
+    </Key>
+    <Property Name="MaTT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenTinhTrang" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Ngay" Type="DateTime" Precision="3" />
+    <Property Name="NgayCapNhat" Type="DateTime" Precision="3" />
+    <Property Name="LyDo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BaiBaos" Relationship="Self.FK__BaiBao__MaTT__46E78A0C" FromRole="TinhTrang" ToRole="BaiBao" />
+  </EntityType>
+  <Association Name="FK__BaiBao__MaLoai__45F365D3">
+    <End Role="LoaiBaiBao" Type="Self.LoaiBaiBao" Multiplicity="0..1" />
+    <End Role="BaiBao" Type="Self.BaiBao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiBaiBao">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="BaiBao">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BaiBao__MaTT__46E78A0C">
+    <End Role="TinhTrang" Type="Self.TinhTrang" Multiplicity="0..1" />
+    <End Role="BaiBao" Type="Self.BaiBao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TinhTrang">
+        <PropertyRef Name="MaTT" />
+      </Principal>
+      <Dependent Role="BaiBao">
+        <PropertyRef Name="MaTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BinhLuan__MaBao__4AB81AF0">
+    <End Role="BaiBao" Type="Self.BaiBao" Multiplicity="0..1" />
+    <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiBao">
+        <PropertyRef Name="MaBao" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="MaBao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BinhLuan__MaKH__4BAC3F29">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NhanVien__MaCV__31EC6D26">
+    <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVu">
+        <PropertyRef Name="MaCV" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KhachHang__MaLoa__36B12243">
+    <End Role="LoaiKhachHang" Type="Self.LoaiKhachHang" Multiplicity="0..1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiKhachHang">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="MaLoaiKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KhachHang_MaTK">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="MaTK" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="MaTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NhanVien_MaTK">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="MaTK" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TaiKhoan__MaQuye__3D5E1FD2">
+    <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="0..1" />
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="MaQuyen" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="MaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TMDT_THEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BaiBaos" EntityType="Self.BaiBao" />
+    <EntitySet Name="BinhLuans" EntityType="Self.BinhLuan" />
+    <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="LoaiBaiBaos" EntityType="Self.LoaiBaiBao" />
+    <EntitySet Name="LoaiKhachHangs" EntityType="Self.LoaiKhachHang" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
+    <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+    <EntitySet Name="TinhTrangs" EntityType="Self.TinhTrang" />
+    <AssociationSet Name="FK__BaiBao__MaLoai__45F365D3" Association="Self.FK__BaiBao__MaLoai__45F365D3">
+      <End Role="LoaiBaiBao" EntitySet="LoaiBaiBaos" />
+      <End Role="BaiBao" EntitySet="BaiBaos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BaiBao__MaTT__46E78A0C" Association="Self.FK__BaiBao__MaTT__46E78A0C">
+      <End Role="TinhTrang" EntitySet="TinhTrangs" />
+      <End Role="BaiBao" EntitySet="BaiBaos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BinhLuan__MaBao__4AB81AF0" Association="Self.FK__BinhLuan__MaBao__4AB81AF0">
+      <End Role="BaiBao" EntitySet="BaiBaos" />
+      <End Role="BinhLuan" EntitySet="BinhLuans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BinhLuan__MaKH__4BAC3F29" Association="Self.FK__BinhLuan__MaKH__4BAC3F29">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="BinhLuan" EntitySet="BinhLuans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NhanVien__MaCV__31EC6D26" Association="Self.FK__NhanVien__MaCV__31EC6D26">
+      <End Role="ChucVu" EntitySet="ChucVus" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KhachHang__MaLoa__36B12243" Association="Self.FK__KhachHang__MaLoa__36B12243">
+      <End Role="LoaiKhachHang" EntitySet="LoaiKhachHangs" />
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KhachHang_MaTK" Association="Self.FK_KhachHang_MaTK">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NhanVien_MaTK" Association="Self.FK_NhanVien_MaTK">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TaiKhoan__MaQuye__3D5E1FD2" Association="Self.FK__TaiKhoan__MaQuye__3D5E1FD2">
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

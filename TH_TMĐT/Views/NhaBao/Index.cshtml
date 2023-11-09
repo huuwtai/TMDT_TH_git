@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TH_TMĐT.Models.BaiBao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tiêu Đề</th>
+            <th>Nội Dung</th>
+            <th>Hình Ảnh</th>
+            <th>Ngày Đăng</th>
+            <th>Ngày Sửa</th>
+            <th>Loại Bài Báo</th>
+            <th>Tình Trạng</th>
+            <th>Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TieuDe)</td>
+                <td>@Html.DisplayFor(modelItem => item.NoiDung)</td>
+                <td>@Html.DisplayFor(modelItem => item.HinhAnh)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgayDang)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgaySua)</td>
+                <td>@Html.DisplayFor(modelItem => item.LoaiBaiBao.TenLoai)</td>
+                <td>@Html.DisplayFor(modelItem => item.TinhTrang.TenTinhTrang)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaBao }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaBao }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaBao }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

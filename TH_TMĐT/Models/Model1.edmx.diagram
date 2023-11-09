@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2299a8ef841742dfbe1ed81812a73f55" Name="Diagram1">
+        <EntityTypeShape EntityType="TMDT_THModel.BaiBao" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.BinhLuan" Width="1.5" PointX="10.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.ChucVu" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.KhachHang" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.LoaiBaiBao" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.LoaiKhachHang" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.NhanVien" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.PhanQuyen" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.TaiKhoan" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMDT_THModel.TinhTrang" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="TMDT_THModel.FK__BaiBao__MaLoai__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_THModel.FK__BaiBao__MaTT__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_THModel.FK__BinhLuan__MaBao__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_THModel.FK__BinhLuan__MaKH__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_THModel.FK__NhanVien__MaCV__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_THModel.FK__KhachHang__MaLoa__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_THModel.FK_KhachHang_MaTK" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_THModel.FK_NhanVien_MaTK" ManuallyRouted="false" />
+        <AssociationConnector Association="TMDT_THModel.FK__TaiKhoan__MaQuye__3D5E1FD2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
